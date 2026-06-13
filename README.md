@@ -1,59 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Jejak Karya
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Jejak Karya adalah platform arsip portofolio digital dan sistem pendataan riwayat perlombaan yang dirancang untuk lingkungan Himpunan Mahasiswa. Aplikasi ini menjadi jembatan antara kebutuhan mahasiswa akan ruang penyimpanan karya yang aman dengan kebutuhan organisasi akan data prestasi yang terstruktur.
 
-## About Laravel
+## Latar Belakang Masalah
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Arsip yang Selalu Hilang:** Mahasiswa sering membuat proposal atau karya lomba yang berkualitas, namun file tersebut hanya tersimpan di perangkat pribadi dan rawan hilang. Tidak ada tempat penyimpanan terpusat yang memudahkan mahasiswa mengakses kembali karya mereka.
+- **Pendataan Manual yang Tidak Efektif:** Himpunan sering kesulitan mengumpulkan data prestasi mahasiswa untuk keperluan apresiasi atau pelacakan rekam jejak warga jurusan. Proses manual menggunakan formulir daring (seperti Google Form) sering kali tidak akurat, datanya sulit diverifikasi, dan tidak interaktif.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Solusi yang Ditawarkan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sistem ini memfasilitasi dua alur kepentingan:
 
-## Learning Laravel
+- **Bagi Mahasiswa:** Menjadi ruang arsip portofolio pribadi yang aman. Mahasiswa bisa mengunggah dan menyimpan dokumen lomba (seperti proposal atau sertifikat) agar sewaktu-waktu bisa diakses kembali untuk keperluan magang, beasiswa, atau asisten laboratorium.
+- **Bagi Himpunan:** Menjadi pusat data rekam jejak yang rapi. Himpunan secara otomatis mendapatkan akses ke data prestasi dan file karya mahasiswa yang sudah terstandarisasi, sehingga memudahkan proses publikasi apresiasi dan pelacakan talenta di dalam jurusan.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Alur Kebijakan Sistem
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Ekosistem Tertutup:** Untuk menjaga integritas dan kerapian data, Admin (Himpunan) memegang kendali atas daftar lomba yang tersedia. Hal ini dilakukan untuk menghindari kekacauan penulisan nama lomba oleh pengguna.
+- **Fleksibilitas Data:** Jika mahasiswa mengikuti perlombaan di luar daftar yang disediakan, sistem menyediakan fitur "Lomba Lainnya" agar mahasiswa tetap bisa mengarsipkan karya mereka.
+- **Pengelolaan Mandiri (Self-Reporting):** Mahasiswa diberikan kebebasan untuk memperbarui progres lomba mereka secara mandiri, mengurangi beban administratif pengurus himpunan.
+- **Verifikasi Akhir:** Admin memiliki hak akses penuh untuk melakukan validasi terhadap sertifikat yang diunggah mahasiswa guna memastikan data yang digunakan untuk publikasi organisasi adalah data yang valid.
 
-## Laravel Sponsors
+## Spesifikasi Teknis
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Sistem ini dikembangkan secara mandiri dengan mengusung arsitektur **MVC (Model-View-Controller)** melalui *framework* **Laravel**, dipadukan dengan integrasi basis data relasional **MySQL**. Kode sumber disusun secara terstruktur dengan penamaan variabel dan fungsi yang konsisten untuk menjaga *clean code*. 
 
-### Premium Partners
+Untuk memastikan interaksi pengguna yang optimal di berbagai perangkat, antarmuka dibangun menggunakan **Bootstrap** sehingga menghasilkan desain yang *fully responsive* (berjalan baik pada *desktop* maupun *mobile*). Secara teknis, platform ini ditopang oleh beberapa fungsionalitas inti:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Operasi CRUD Terintegrasi:** Seluruh entitas utama (seperti pengelolaan master data lomba oleh Admin dan pelaporan arsip karya oleh Mahasiswa) mengimplementasikan operasi *Create, Read, Update,* dan *Delete* untuk penyimpanan data secara permanen.
+- **Autentikasi & Hak Akses (Role-Based):** Sistem memiliki mekanisme *Login/Logout* (Authentication) yang diamankan oleh *Middleware*. Terdapat pemisahan hak akses yang ketat antara Admin (Himpunan) dan User (Mahasiswa), sehingga mahasiswa hanya dapat melihat dan memanipulasi datanya sendiri.
+- **Validasi Berlapis (Client & Server-Side):** Diimplementasikan untuk menjamin keamanan web dasar dan integritas data. Validasi memastikan tidak ada isian wajib yang terlewat, serta memeriksa format spesifik dan batas ukuran file (seperti ekstensi PDF/JPG) sebelum diproses oleh server.
+- **Manajemen Upload File:** Aplikasi menangani pemrosesan unggahan dokumen (berkas proposal dan bukti sertifikat) ke dalam penyimpanan lokal secara rapi. Berkas yang diunggah kemudian dapat ditinjau atau diunduh kembali sesuai dengan alur verifikasi.
+- **Manipulasi DOM JavaScript (Fitur Dinamis):** Digunakan untuk meningkatkan interaktivitas formulir secara *real-time*. Sebagai contoh, saat mahasiswa memilih opsi "Lomba Lainnya" dari *dropdown*, manipulasi DOM akan merender kolom isian tambahan tanpa memerlukan *reload* halaman.
+- **Pagination & Halaman Statis:** Sistem memanfaatkan fitur *pagination* untuk mengatur tampilan daftar data yang panjang agar antarmuka tetap responsif. Selain itu, sistem juga menyediakan halaman statis tambahan, seperti **Pusat Bantuan (FAQ)**, guna membantu pengguna dalam memahami cara kerja portal.
 
-## Contributing
+## Demo Proyek
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Tonton video demo Jejak Karya di sini: https://www.youtube.com/playlist?list=PL59fElv0Npv-3L8hcVFiEDJUTZ7pcQZH2
