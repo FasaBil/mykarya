@@ -17,7 +17,7 @@ Sistem ini memfasilitasi dua alur kepentingan:
 ## Alur Kebijakan Sistem
 
 - **Ekosistem Tertutup:** Untuk menjaga integritas dan kerapian data, Admin (Himpunan) memegang kendali atas daftar lomba yang tersedia. Hal ini dilakukan untuk menghindari kekacauan penulisan nama lomba oleh pengguna.
-- **Fleksibilitas Data:** Jika mahasiswa mengikuti perlombaan di luar daftar yang disediakan, sistem menyediakan fitur "Lomba Lainnya" agar mahasiswa tetap bisa mengarsipkan karya mereka.
+- **Integritas Master Data:** Sistem menerapkan logika *Strict Closed Ecosystem*. Mahasiswa hanya dapat memilih perlombaan dari opsi yang tersedia. Jika lomba yang diikuti tidak ada di pilihan, mahasiswa harus menghubungi Admin Himpunan agar menambahkannya ke *master data*. Hal ini bertujuan untuk menjaga kebersihan, konsistensi basis data, dan mencegah terjadinya kesalahan pengetikan (*typo*).
 - **Pengelolaan Mandiri (Self-Reporting):** Mahasiswa diberikan kebebasan untuk memperbarui progres lomba mereka secara mandiri, mengurangi beban administratif pengurus himpunan.
 - **Verifikasi Akhir:** Admin memiliki hak akses penuh untuk melakukan validasi terhadap sertifikat yang diunggah mahasiswa guna memastikan data yang digunakan untuk publikasi organisasi adalah data yang valid.
 
@@ -31,7 +31,6 @@ Untuk memastikan interaksi pengguna yang optimal di berbagai perangkat, antarmuk
 - **Autentikasi & Hak Akses (Role-Based):** Sistem memiliki mekanisme *Login/Logout* (Authentication) yang diamankan oleh *Middleware*. Terdapat pemisahan hak akses yang ketat antara Admin (Himpunan) dan User (Mahasiswa), sehingga mahasiswa hanya dapat melihat dan memanipulasi datanya sendiri.
 - **Validasi Berlapis (Client & Server-Side):** Diimplementasikan untuk menjamin keamanan web dasar dan integritas data. Validasi memastikan tidak ada isian wajib yang terlewat, serta memeriksa format spesifik dan batas ukuran file (seperti ekstensi PDF/JPG) sebelum diproses oleh server.
 - **Manajemen Upload File:** Aplikasi menangani pemrosesan unggahan dokumen (berkas proposal dan bukti sertifikat) ke dalam penyimpanan lokal secara rapi. Berkas yang diunggah kemudian dapat ditinjau atau diunduh kembali sesuai dengan alur verifikasi.
-- **Manipulasi DOM JavaScript (Fitur Dinamis):** Digunakan untuk meningkatkan interaktivitas formulir secara *real-time*. Sebagai contoh, saat mahasiswa memilih opsi "Lomba Lainnya" dari *dropdown*, manipulasi DOM akan merender kolom isian tambahan tanpa memerlukan *reload* halaman.
 - **Pagination & Halaman Statis:** Sistem memanfaatkan fitur *pagination* untuk mengatur tampilan daftar data yang panjang agar antarmuka tetap responsif. Selain itu, sistem juga menyediakan halaman statis tambahan, seperti **Pusat Bantuan (FAQ)**, guna membantu pengguna dalam memahami cara kerja portal.
 
 ## Demo Proyek
